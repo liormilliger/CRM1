@@ -1,0 +1,53 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: crm-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: crm
+  template:
+    metadata:
+      labels:
+        app: crm
+    spec:
+      containers:
+        - name: crm-demo
+          image: pwstaging/demo-crm:latest
+          # envFrom:
+          # # - secretRef:
+          # #     name: mongo-secret
+          
+          # - configMapRef:
+          #     name: demo-crm-conf
+          ports:
+            - containerPort: 3000
+
+          env:
+            - name: MONGODB_URI
+              valueFrom:
+                secretKeyRef:
+                  name: mongo-secret
+                  key: MONGODB_URI
+            - name: MONGO_INITDB_ROOT_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  name: mongo-secret
+                  key: username
+            - name: MONGO_INITDB_ROOT_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: mongo-secret
+                  key: password          
+          # env:
+          #   # - name: MONGODB_URI
+          #   # value: mongodb://liorm:liormpassword@mongo-0.mongodb:27017"
+          #     valueFrom:
+          #       secretKeyRef:
+          #         - name: mongo-secret
+          #           key: MONGODB_URI
+          #         - name: mongo-secret
+          #           key: username
+          #         - name: mongo-secret
+          #           key: password
