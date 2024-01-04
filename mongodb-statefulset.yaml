@@ -16,37 +16,24 @@ spec:
       containers:
       - name: mongo
         image: mongo:5.0
-        # env:
-        # - name: MONGO_INITDB_ROOT_USERNAME
-        # #   # value: liorm
-        #   valueFrom:
-        #     secretKeyRef:
-        #       name: mongo-secret
-        #       key: username
-        # - name: MONGO_INITDB_ROOT_PASSWORD
-        # #   # value: liormpassword
-        #   valueFrom:
-        #     secretKeyRef:
-        #       name: mongo-secret
-        #       key: password
         ports:
         - containerPort: 27017
           name: mongo
         volumeMounts:
         - name: mongo-data
           mountPath: /data/db
-        # command:
-        # - "mongod"
-        # # - "--auth"
-        # - "--bind_ip_all"
-        # - "--replSet"
-        # - "demoReplSet"
+        command:
+        - "mongod"
+        - "--bind_ip_all"
+        - "--replSet"
+        - "demoReplSet"
   volumeClaimTemplates:
   - metadata:
       name: mongo-data
     spec:
       storageClassName: standard
-      accessModes: [ "ReadWriteOnce" ]
+      accessModes:
+        - ReadWriteOnce
       resources:
         requests:
           storage: 150Mi

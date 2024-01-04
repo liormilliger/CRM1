@@ -3,7 +3,8 @@ kind: ConfigMap
 metadata:
   name: demo-crm-conf
 data:
-  MONGODB_URI: "mongodb://mongo-0.mongodb,mongo-1.mongodb,mongo-2.mongodb:27017"
+  MONGODB_URI: "mongodb://mongo-0.mongodb.default.svc.cluster.local:27017,mongo-1.mongodb.default.svc.cluster.local:27017,mongo-2.mongodb.default.svc.cluster.local:27017/test"
+  # MONGODB_URI: "mongodb://mongo-0.mongodb,mongo-1.mongodb,mongo-2.mongodb:27017"
   # MONGODB_URI: "mongodb://mongo-0.mongodb:27017"
   # env:
   #       - name: MONGO_INITDB_ROOT_USERNAME
