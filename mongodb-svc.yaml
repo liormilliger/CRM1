@@ -8,7 +8,7 @@ spec:
   clusterIP: None
   ports:
   - port: 27017
-    name: mongo
+    # name: mongo
   selector:
     app: mongo
 
