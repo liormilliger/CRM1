@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: demo-crm-conf
+data:
+  MONGODB_URI: "mongodb://root:milliger@mongo-mongodb-0.mongo-mongodb-headless.default.svc.cluster.local:27017,mongo-mongodb-1.mongo-mongodb-headless.default.svc.cluster.local:27017,mongo-mongodb-2.mongo-mongodb-headless.default.svc.cluster.local:27017/test?authSource=admin"
+  # MONGODB_URI: "mongodb://root:milliger@mongo-0.mongodb.default.svc.cluster.local:27017,mongo-1.mongodb.default.svc.cluster.local:27017,mongo-2.mongodb.default.svc.cluster.local:27017/test"
+  PERSISTENCE: "true"
+  LOG_LEVEL: "info"
