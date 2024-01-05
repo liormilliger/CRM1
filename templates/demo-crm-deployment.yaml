@@ -6,17 +6,17 @@ spec:
   replicas: 1
   selector:
     matchLabels:
-      app: {{ .Values.appName }}
+      app: crm
   template:
     metadata:
       labels:
-        app: {{ .Values.appName }}
+        app: crm
     spec:
       containers:
       - name: crm-demo
         image: pwstaging/demo-crm:latest
         envFrom:
         - configMapRef:
-            name: {{ .Values.confMap }}
+            name: crm-conf
         ports:
         - containerPort: 3000

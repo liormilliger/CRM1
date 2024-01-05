@@ -1,10 +1,10 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: {{ .Values.appSvc }}
+  name: crm-service
 spec:
   selector:
-    app: {{ .Values.appName }}
+    app: crm
   type: ClusterIP
   ports:
     - protocol: TCP
