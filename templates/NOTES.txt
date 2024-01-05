@@ -1,0 +1,4 @@
+First got to directory crm-deploy and run command
+helm dependency build
+
+than go up one directory and build the crm helm chart
